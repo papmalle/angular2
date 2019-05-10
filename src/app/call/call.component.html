@@ -1,0 +1,57 @@
+<!--
+<li class="list-group-item">
+
+  <div style="width:20px;height:20px;background-color:red;"
+       *ngIf="callStatus === 'start'"></div>
+
+
+  <h4 [ngStyle]="{color : getColore()}">{{callName}} &#45;&#45; statut :  {{callStatus}}</h4>
+  <input type="text" class="form-control" [(ngModel)]="callName">
+
+
+</li>
+-->
+
+
+<table class="table table-striped table-dark">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">date evenement</th>
+    <th scope="col">resource</th>
+    <th scope="col">calling</th>
+    <th scope="col">description</th>
+    <th scope="col">queue duration</th>
+    <th scope="col">call duration</th>
+    <th scope="col">statut</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let call of calls" (click)="showDetails(call)">
+    <td>{{call.eventDate | date}}</td>
+    <td>{{call.resource}}</td>
+    <td>{{call.calling}}</td>
+    <td>{{call.description}}</td>
+    <td>{{call.queueDuration}} sec</td>
+    <td>{{call.callDuration}} sec</td>
+    <td>{{call.typeCallEventDto}}</td>
+  </tr>
+
+  </tbody>
+</table>
+
+<div *ngIf="selectedCall">
+  <h2>Details</h2>
+  <div><span>memberSessionUUID: </span>{{selectedCall.memberSessionUUID}}</div>
+  <div><span>resource: </span>{{selectedCall.resource}}</div>
+  <div><span>calling: </span>{{selectedCall.calling}}</div>
+  <div><span>description: </span>{{selectedCall.description}}</div>
+  <div><span>eventDate: </span>{{selectedCall.eventDate}}</div>
+  <div><span>agentNumber: </span>{{selectedCall.agentNumber}}</div>
+  <div><span>queueDuration: </span>{{selectedCall.queueDuration}}</div>
+  <div><span>callDuration: </span>{{selectedCall.callDuration}}</div>
+  <div><span>matNumber: </span>{{selectedCall.matNumber}}</div>
+  <div><span>customerFirstName: </span>{{selectedCall.customerFirstName}}</div>
+  <button class="btn btn-success" (click)="selectedCall = false">Clear</button>
+
+</div>
+
