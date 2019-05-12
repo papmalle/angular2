@@ -12,7 +12,7 @@
 </li>
 -->
 
-
+<h2>CALLS</h2>
 <table class="table table-striped table-dark">
   <thead class="thead-dark">
   <tr>
@@ -26,7 +26,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let call of calls" (click)="showDetails(call)">
+  <tr *ngFor="let call of calls" (click)="showDetails(call.memberSessionUUID)">
     <td>{{call.eventDate | date}}</td>
     <td>{{call.resource}}</td>
     <td>{{call.calling}}</td>
@@ -40,18 +40,7 @@
 </table>
 
 <div *ngIf="selectedCall">
-  <h2>Details</h2>
-  <div><span>memberSessionUUID: </span>{{selectedCall.memberSessionUUID}}</div>
-  <div><span>resource: </span>{{selectedCall.resource}}</div>
-  <div><span>calling: </span>{{selectedCall.calling}}</div>
-  <div><span>description: </span>{{selectedCall.description}}</div>
-  <div><span>eventDate: </span>{{selectedCall.eventDate}}</div>
-  <div><span>agentNumber: </span>{{selectedCall.agentNumber}}</div>
-  <div><span>queueDuration: </span>{{selectedCall.queueDuration}}</div>
-  <div><span>callDuration: </span>{{selectedCall.callDuration}}</div>
-  <div><span>matNumber: </span>{{selectedCall.matNumber}}</div>
-  <div><span>customerFirstName: </span>{{selectedCall.customerFirstName}}</div>
-  <button class="btn btn-success" (click)="selectedCall = false">Clear</button>
-
+  <app-call-view></app-call-view>
+  <!--<app-call-view [call]="selectedCall"></app-call-view>-->
 </div>
 

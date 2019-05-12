@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Call} from './Call';
 import {CallService} from '../services/call.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-call',
@@ -15,22 +16,15 @@ export class CallComponent implements OnInit {
   calls: Call[];
   selectedCall: Call;
 
-  constructor(private callService: CallService) {
+  constructor(private callService: CallService, private router: Router) {
   }
 
   ngOnInit() {
-    this.callService.getListAppareils().subscribe((value: Call[]) => {
-        this.calls = value;
-      }, (error: any) => {
-        console.log('il ya eu une erreur');
-      },
-      () => {
-        console.log('Complete');
-      });
+    this.calls = this.callService.findAllCalls();
   }
 
 
-  showDetails(call: Call): void {
-    this.selectedCall = call;
+  showDetails(idMember: string): void {
+    this.router.navigate(['calls/' + idMember]);
   }
 }
