@@ -1,0 +1,16 @@
+<h2>Call Details</h2>
+<div *ngIf="call">
+  <div><span>memberSessionUUID: </span>{{call.memberSessionUUID}}</div>
+  <div><span>resource: </span>{{call.resource}}</div>
+  <div><span>calling: </span>{{call.calling}}</div>
+  <div><span>description: </span>{{call.description}}</div>
+  <div><span>eventDate: </span>{{call.eventDate}}</div>
+  <div><span>agentNumber: </span>{{call.agentNumber}}</div>
+  <div><span>queueDuration: </span>{{call.queueDuration}}</div>
+  <div><span>callDuration: </span>{{call.callDuration}}</div>
+  <div><span>matNumber: </span>{{call.matNumber}}</div>
+  <div><span>customerFirstName: </span>{{call.customerFirstName}}</div>
+  <br/>
+</div>
+<button class="btn btn-success" routerLink="/calls">Return</button>
+<!--<button class="btn btn-success" (click)="returnCalls()">Return</button>-->
