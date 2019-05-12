@@ -18,7 +18,7 @@ const appRoutes: Routes = [
   {path: 'calls', canActivate: [AuthGuard], component: CallComponent},
   {path: 'calls/:id', canActivate: [AuthGuard], component: CallViewComponent},
   {path: 'auth', component: AuthComponent},
-  {path: '', component: AuthComponent},
+  {path: '', canActivate: [AuthGuard], component: CallComponent},
   {path: 'not-found', component: FourOhFourComponent},
   {path: '**', redirectTo: '/not-found'}
 
